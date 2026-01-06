@@ -1,11 +1,13 @@
-# 문제 : 입력받은 정수의 모든 약수를 출력하는 함수를 구현해주세요.
-# 약수 => 나눴을 때 나머지가 0
-
-def print_divisors(num):
-  i = 1
-  while i <= num:
-      if num % i == 0:
-          print(i)
-      i += 1
-
-print_divisors(1000)
+# 함수 => 자판기
+# 매개변수 => 데이터 투입구
+# 인자 => 동전(데이터)
+# 리턴 => 데이터 배출구
+# 함수 안에 return 한 개만 사용가능 단 아래와 같은 경우는 제외.
+def plus(a, b):
+    if a + b == 5:
+        return a + b
+    else:
+        return 7
+    
+k = plus(3, 3)
+print(k)
