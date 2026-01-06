@@ -1,12 +1,10 @@
-# 매개변수 => 함수 외부에서 값을 가져온다.
-# 함수 내부랑 외부를 연결해주는 매개체 그래서 매개변수
-# 즉 a와 b를 연결하는 매개체
-def print_dan(dan):
-    print(f"== 구구단 {dan}단 출력 ==")
+# 문제 : 함수를 사용해서 코드량을 확 줄여주세요.
+def print_dan(dan, limit): # 괄호 안쪽에 있는 dan, limit => 매개변수
+    print(f"== {dan}단 ==")
     i = 1
-    while i <= 9:
+    while i <= limit:
         print(f"{dan} * {i} = {dan * i}")
         i += 1
-
-print_dan(2)
-# 위에 () 안쪽에 있는 숫자들을 보고 인자 또는 인수 또는 args(아규먼트)
+        
+print_dan(1, 5) # 1단 * 5 => 1, 5 각각 1은 dan, 5 => limit
+print_dan(2, 13) # 2단 * 13       
