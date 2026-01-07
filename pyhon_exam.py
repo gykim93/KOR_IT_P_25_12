@@ -1,36 +1,20 @@
-# 문제 : 입력받은 정수가 3의 배수인지 알려주는 함수 구현
-def is_3_multiple(num):
-    return num % 3 == 0
+# 문제 - 입력받은 정수가 소수인지 아닌지 알려주는 함수를 구현해주세요.(개념 : 함수, 반복문, 리턴)
+# 소수 => 1과 자기자신 제외하고 나눠지지 않는 수
 
-print(f"10은(는) 3의 배수인가요? : {is_3_multiple(10)}\n")
-print(f"12은(는) 3의 배수인가요? : {is_3_multiple(12)}\n") 
-
-
-
-
-
-#문제 : 입력받은 정수가 100보다 큰지 알려주는 함수 구현
-def is_bigger_than_100(num):
-    return num > 100
-
-print(f"128은(는) 100보다 큽니다. : {is_bigger_than_100(128)}\n")
-print(f"28은(는) 100보다 큽니다. : {is_bigger_than_100(28)}\n")
-print(f"100은(는) 100보다 큽니다. : {is_bigger_than_100(100)}\n") 
-
-
- # 문제 : 입력받은 정수의 모든 약수의 합을 리턴하는 함수를 구현해주세요.
-
-def get_divisors_sum(num):
-    s = 0
-    i = 1
-    while i <= num:
+def is_prime_number(num):
+    if num == 1:
+        return False
+    i = 2
+    while i < num : # 2부터 num 까지의 수 중에서 num을 나눠 떨어지면 소수가x
         if num % i == 0:
-            s += i
+            return False
         i += 1
-    return s
+    return True # 위 조건과 반복문을 모두 만족하지 않았다면 소수다.
 
-s = get_divisors_sum(1000)
-
-print(f"정수 1000의 약수의 합 : {s}")
-# 출력 => 정수 1000의 약수의 합 : 2340 
- 
+print(f"1은 소수입니다 : {is_prime_number(1)}")        
+print(f"3은 소수입니다 : {is_prime_number(3)}")
+print(f"4는 소수입니다 : {is_prime_number(4)}")
+print(f"5는 소수입니다 : {is_prime_number(5)}")
+print(f"6는 소수입니다 : {is_prime_number(6)}")
+print(f"7는 소수입니다 : {is_prime_number(7)}")
+print(f"1000은 소수입니다 : {is_prime_number(1000)}")
