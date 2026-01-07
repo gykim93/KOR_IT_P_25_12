@@ -1,37 +1,28 @@
-# 소수판별기
-def is_prime_number(num):
-    if num == 1:
-        return False
-    i = 2
-    while i < num : # 2부터 num 까지의 수 중에서 num을 나눠 떨어지면 소수가x
-        if num % i == 0:
-            return False
-        i += 1
-    return True # 위 조건과 반복문을 모두 만족하지 않았다면 소수다.
+# 문제 : 두개의 숫자를 연결해서 새로운 문장을 만들어주세요.
+a = 10 # => "10"
+b = 20 # => "20"
 
-# 문제 : 1부터 n 사이의 수 중에서 소수의 합을 반환하는 함수 `get_1_to_n_prime_numbers_sum` 를 구현해주세요.
+print(str(a) + str(b))
+# 출력 => 1020
 
+# 문제 : 두개의 숫자문장를 더해서 새 정수를 만들어주세요.
+a = '3' # 3
+b = '6' # 6
 
-# 1부터 n 사이의 수 중에서 소수의 합 반환하는 함수
-def get_1_to_n_prime_numbers_sum(n):
-    # 구현
-    sum = 0
-    i = 1
-    while i <= n:
-        if is_prime_number(i):
-            sum += i
-        i += 1
-    return sum
+print(int(a) + int(b))
+# 출력 9
 
-sum = 0
-number = 0
+# 문제 : 두개의 숫자문장를 더해서 새 실수를 만들어주세요.
+a = '3.1' # 3.1
+b = '6.1' # 6.1
 
-number = 1000
-sum = get_1_to_n_prime_numbers_sum(number)
-print(f"1부터 {number}사이에 존재하는 소수의 합 : {sum}개\n")
-  # 출력 => 1부터 1000사이에 존재하는 소수의 합 : 76127
+print(float(a) + float(b))
+# 출력 9.2
 
-number = 2000
-sum = get_1_to_n_prime_numbers_sum(number)
-print(f"1부터 {number}사이에 존재하는 소수의 합 : {sum}개\n")
- # 출력 => 1부터 2000사이에 존재하는 소수의 합 : 277050
+# 문제 : 2개 실수문장을 정수화 하여 더해주세요.
+# 실수화 => 정수화
+a = '3.1' # 3.1 => 3
+b = '6.1' # 6.1 => 6
+
+print(int(float(a)) + int(float(b)))
+# 출력 9
