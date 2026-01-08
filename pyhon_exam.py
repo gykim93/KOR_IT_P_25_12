@@ -1,23 +1,37 @@
-# 문제12 : 리스트에 순서대로 '월', '화', '수', '목', '금'을 한번에 담아주세요. '화'가 리스트 안에 있는지 if문으로 체크 후, 있다면 삭제해주세요.
-day = ["월", "화", "수", "목", "금"]
-print(day)
-if "화" in day:
-    day.remove("화")
-print(day)
+# while문, 0 ~ 9 까지 출력
+# i = 0
+# while i <= 9:
+#     print(i)
+#     i += 1
 
-# 문제13 : 리스트에 순서대로 '월', '화', '수', '목', '금'을 한번에 담아주세요. 리스트에 있는 '금'을 삭제하는 3가지 방법을 보여주세요.
-day1 = ["월", "화", "수", "목", "금"]
-# del day1[4]
-# del day1[-1]
-# del day1[day1.index('금')]
-# day1.remove('금')
-# del
-# 변수 삭제 or 인덱스로 객체 삭제
-# del 변수 or del 리스트[idx]
-# 삭제 할 대상이 없다? NameError
+# for문 설명 시작
+# range(끝값)
+# range(시작, 끝)
+# range(시작, 끝, 증가)
 
-# remove()
-# 리스트에서 특정 값을 삭제
-# 리스트.remove(값)
-# 리스트에 값이 없다? ValueError
-# 리스트 객체만 사용 가능
+# for문, 0 ~ 9 까지 출력
+# for i in range(10):
+#     print(i)
+
+# for문, 1 ~ 9 까지 출력
+# for i in range(1, 10):
+#     print(i)
+
+# for문, 2 ~ 10 까지 출력, 2씩 증가
+# for i in range(2, 11, 2):
+#     print(i)
+
+# 리스트 a셋팅
+a = [10, 20, 30, 40, 50]
+
+# for, 리스트의 모든 요소 출력
+# for v in a:
+#     print(v)
+
+# for, 리스트의 모든 요소의 번호 출력
+# for v in range(len(a)):
+#     print(v)
+
+# for, 리스트의 모든 요소의 번호와 값 출력
+# for i in range(len(a)):
+#     print(f"a[{i}] : {a[i]}")
