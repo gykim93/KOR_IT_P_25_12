@@ -1,37 +1,48 @@
-# while문, 0 ~ 9 까지 출력
-# i = 0
-# while i <= 9:
+# 문제 - for문으로 1부터 100까지 출력
+# for i in range(1, 101):
 #     print(i)
-#     i += 1
-
-# for문 설명 시작
-# range(끝값)
-# range(시작, 끝)
-# range(시작, 끝, 증가)
-
-# for문, 0 ~ 9 까지 출력
-# for i in range(10):
+# 문제 - for문으로 100부터 1까지 출력
+# for i in range(100, 0, -1):
 #     print(i)
-
-# for문, 1 ~ 9 까지 출력
+# 문제 - for문으로 1부터 100 사이의 짝수만 출력
+# for i in range(2, 101, 2):
+#     print(i)
+# 문제 - for문으로 100부터 1 사이의 짝수만 출력
+# for i in range(100, 0, -2):
+#     print(i)
+# 문제 - for문으로 구구단 8단 출력
+# dan = 8
 # for i in range(1, 10):
+#     print(f"{dan} * {i} = {dan * i}")
+# 문제 - for문으로 구구단 1단 ~ 9단 출력
+# for dan in range(1, 10):
+#     print(f"=={dan}단==")
+#     for i in range(1, 10):
+#         print(f"{dan} * {i} = {dan * i}")
+# 문제 : for문으로 1부터 n사이에 존재하는 소수의 합을 반환하는 함수 구현
+# def is_prime_number(num):
+#     if num == 1:
+#         return False
+    
+#     for i in range(2, num): # 2부터 num 까지의 수 중에서 num을 나눠 떨어지면 소수가x
+#         if num % i == 0:
+#             return False
+        
+#     return True # 위 조건과 반복문을 모두 만족하지 않았다면 소수다.
+
+# def get_1_to_n_prime_sum(n):
+#     s = 0
+#     for i in range(1, n + 1):
+#         if is_prime_number(i):
+#             s += i
+#     return s
+
+# n = 10
+# print(f"1부터 {n}사이에 존재하는 소수의 합 : {get_1_to_n_prime_sum(n)}")
+# n = 100            
+# print(f"1부터 {n}사이에 존재하는 소수의 합 : {get_1_to_n_prime_sum(n)}")
+
+# 문제 : 리스트에 2, 1, 5, 6, 7를 담고, for문으로 요소 전부 출력
+# a = [2, 1, 5, 6, 7]
+# for i in a:
 #     print(i)
-
-# for문, 2 ~ 10 까지 출력, 2씩 증가
-# for i in range(2, 11, 2):
-#     print(i)
-
-# 리스트 a셋팅
-a = [10, 20, 30, 40, 50]
-
-# for, 리스트의 모든 요소 출력
-# for v in a:
-#     print(v)
-
-# for, 리스트의 모든 요소의 번호 출력
-# for v in range(len(a)):
-#     print(v)
-
-# for, 리스트의 모든 요소의 번호와 값 출력
-# for i in range(len(a)):
-#     print(f"a[{i}] : {a[i]}")
