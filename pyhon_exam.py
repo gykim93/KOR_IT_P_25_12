@@ -1,40 +1,25 @@
-# 문제 - 사용자에게 문장 1개를 입력받아서, 출력해주세요
+# 문제 : 리스트에 2, 1, 5, 6, 7를 담고, for문으로 요소 전부 출력, len 사용
+# a = [2, 1, 5, 6, 7]
+# for i in range(len(a)):
+#     print(a[i])
+# 문제 : 리스트에 2, 1, 5, 6, 7를 담고, for문으로 요소들을 역순으로 출력, len 사용
+# a = [2, 1, 5, 6, 7]
+# for i in range(len(a) -1, -1, -1):
+#     print(a[i])
 
-# print("문장을 입력해주세요 : ", end="")
-# l = input()
-# print("l : ", l)
-
-# 문제- 사용자에게 문장 1개를 입력받아서, ,를 기준으로 나눠주세요
-# print("문장을 입력해주세요 : ", end="")
-# line = input()  # 사용자가 문장을 입력
-# l = line.split(",")  # 입력된 문장을 기준으로 ','  기준으로 나눠서 리스트로 반환
-# print(l)
-
-# 문제 - 사용자에게 문장 1개를 입력받아서, strip 한 결과를, 다시 ,를 기준으로 나눠주세요
-# print("문장을 입력해주세요 : ", end="")
-# s = input().strip().split(",")
-# # s = input()
-# # s = s.strip()
-# # s = s.split(",")
-# print(s)
-
-# # 문제 - 사용자에게 숫자 2개를 입력받아서, 더한 결과를 출력해주세요.
-# print("숫자2개를 입력해주세요 : ", end="")
-# s = input().strip().split(",")
-# print(s)
-# s[0] = int(s[0])
-# s[1] = int(s[1])
-# print(s[0] + s[1])
-# 문제 - 사용자에게 숫자 3개를 입력받아서, 더한 결과를 출력해주세요. map, strip를 사용해주세요.
-# print("숫자 3개를 `,` 로 구분지어서 입력해주세요.")
-# print("ex ) 20, 30, 40")
-# print("숫자를 입력해주세요 : ", end="")
-# a, b, c = map(int, input().strip().split(","))
-# 1. input() 실행 : 사용자에게 입력을 받는다.
-# 2. strip() 실행 : 입력값의 앞뒤 공백 제거
-# 3. split() 실행 : (',') 기준으로 나눠서 문자열 리스트로 만든다.
-# 4. map(int,...)실행 : map(int, ['20', '30', '40']) => 각 요소를 정수로 반환
-# 5. a, b, c에 각 정수 값을 할당해준다.
-# print(f"a : {a}")
-# print(f"b : {b}")
-# print(f"c : {c}")
+# 문제 : 리스트에 각 달의 끝 날짜들을 담고, '1월은 31일까지'와 같은 양식으로 출력
+# end_days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+# current_month = 1
+# for end_day in end_days:
+#     print(f"{current_month}월은 {end_day}일까지")
+#     current_month += 1
+# 문제 : 리스트에 각 달의 끝 날짜들을 담고, '1월은 31일까지'와 같은 양식으로 출력, len 사용
+# end_days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+# for i in range(len(end_days)):
+#     print(f"{i + 1}월은 {end_days[i]}일까지")
+# 문제 : 리스트에 각 달의 끝 날짜들을 담고, '1월은 31일까지'와 같은 양식으로 출력, enumerate 사용
+end_days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+# enumerate() 함수 => 리스트
+for i, end_day in enumerate(end_days):
+    month = i + 1 # month 변수에 인덱스 값에 1을 더해서 실제 월
+    print(f"{month}월은 {end_day}일까지")
