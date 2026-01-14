@@ -1,68 +1,96 @@
-# 딕셔너리를 이용해서 회원 정보를 저장해주세요. 회원 정보는 아이디, 비밀번호, 이름으로 하겠습니다.
-# 아이디가 hong123, 비밀번호가 1234, 이름이 홍길동인 회원
-# 아이디가 sony7, 비밀번호가 7777, 이름이 손흥민인 회원
-# 아이디가 ryu99, 비밀번호가 9999, 이름이 류현진인 회원
-# 위 세명의 회원을 딕셔너리를 이용해 만들고 출력해주세요. 회원의 정보를 모두 출력해주세요.
+# 회원리스트를 이용해 로그인 기능 만들기
 
-"""
-아이디 : hong123
-비밀번호 : 1234
-이름 : 홍길동
-================
-아이디 : sony7
-비밀번호 : 7777
-이름 : 손흥민
-================
-아이디 : ryu99
-비밀번호 : 9999
-이름 : 류현진
-================
-"""
 user1 = {"아이디": "hong123", "비밀번호": "1234", "이름": "홍길동"}
 user2 = {"아이디": "sony7", "비밀번호": "7777", "이름": "손흥민"}
 user3 = {"아이디": "ryu99", "비밀번호": "9999", "이름": "류현진"}
 
 user_list = [user1, user2, user3]
-# 모든 회원 정보 출력
-def print_all_users():
+
+
+
+article1 = {
+    "번호": 1,
+    "제목": "소니의 축구교실",
+    "내용": "소니의 축구강좌",
+    "작성자": "sony7",
+}
+article2 = {
+    "번호": 2,
+    "제목": "류뚱의 야구교실",
+    "내용": "류뚱의 야구강좌",
+    "작성자": "ryu99",
+}
+article3 = {
+    "번호": 3,
+    "제목": "길동의 도술교술",
+    "내용": "길동의 도술강좌",
+    "작성자": "hong123",
+}
+
+article_list = [article1, article2, article3]
+
+no = 4  # 게시물 번호 관리 변수
+
+# 함수
+
+
+# 게시물 목록을 출력해주는 함수
+def printArticle():
+    print("==========  게시물 목록  =========")
+
+    for article in article_list:
+        print(f"번호 : {article["번호"]} 제목 : {article["제목"]}")
+    print("==================================")
+
+
+# 게시물 추가
+def addArticle():
+    global no  # 전역변수 사용
+    title = input("제목을 입력해주세요 : ")
+    body = input("내용을 입력해주세요 : ")
+    article = {"번호": no, "제목": title, "내용": body, "작성자": login_id}
+    article_list.append(article)
+    no += 1
+
+
+# 로그인 성공여부 체크 함수
+def loginCheck(id, pw):
     for user in user_list:
-        for key,value in user.items():
-            print(f"{key} : {value}")
-        print("================")
-# print_all_users()
-# # 모든 회원 아이디를 출력
-# for user in user_list:
-#     print(user["아이디"])
+        if user["아이디"] == id:
+            if user["비밀번호"] == pw:
+                print(f"{user["이름"]}님 반갑습니다!")
+                return True
+            else:
+                print("비밀번호를 틀렸습니다.")
+                return False
+    print("없는 아이디 입니다.")
+    return False
 
-# hong123 아이디를 가진 회원의 이름 출력
-# for user in user_list:
-#     if user["아이디"] == "hong123":
-#         print(user["이름"])
 
-# hong123 아이디를 가진 회원의 비밀번호를 3333으로 수정 후 모든 회원 정보 출력
-# for user in user_list:
-#     if user["아이디"] == "hong123":
-#         user["비밀번호"] = "3333"
-# print_all_users()
+# 게시판 명령어 도움말 함수
+def printHelp():
+    print("add : 게시물 추가")
+    print("list : 게시물 목록 조회")
 
-# 아이디가 hong124, 이름 홍길순, 비밀번호 h1234 인 회원추가
-user5 = {"아이디": "hong124", "비밀번호": "h1234", "이름": "홍길순"}
-user_list.append(user5)
-# print_all_users()
 
-# 아이디가 중복될 시 추가 거부.
-user5 = {}
-user5["아이디"] = "hong123"
-user5["비밀번호"] = "h1234"
-user5["이름"] = "홍길"
+login_id = input("아이디를 입력해 주세요 : ")
+login_pw = input("비밀번호를 입력해 주세요 : ")
 
-flag = True
-for user in user_list:
-    if user["아이디"] == user5["아이디"]:
-        flag = False
-        print("이미 존재하는 아이디 입니다.")
-        break
-if flag:
-    user_list.append(user5)    
-    
-print_all_users()    
+
+loginResult = loginCheck(login_id, login_pw)  # 성공 ? 실패?
+
+
+# 정상적으로 로그인 시에 게시판 명령어를 입력할 수 있다.
+
+if loginResult:
+    while True:
+        cmd = input("명령어를 입력해주세요 : ")
+        if cmd == "exit":
+            print("프로그램을 종료합니다")
+            break
+        elif cmd == "help":
+            printHelp()
+        elif cmd == "add":
+            addArticle()
+        elif cmd == "list":
+            printArticle()
