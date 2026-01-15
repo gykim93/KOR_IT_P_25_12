@@ -1,38 +1,28 @@
-# 상속 => 물려받다, 물려받은 기능을 유치한채 다른 기능을 추가
-# 물려주는 클래스 => 부모클래스
-# 물려받는 클래스 => 자식클래스
+# 포함관계
+# 자동차 클래스가 엔진 클래스의 인스턴스를 포함하는 것을 생각
+# 자동차는 엔진 없이는 작동x, 자동차 클래스는 엔진 클래스의 인스턴스를 내부에 포함
+# 포함관계에서는 클래스 간에 부모 자식이라는 개념X
+# 대신에 한 클래스가 다른 클래스의 인스턴스를 포함하는 관계
 
-
-# 부모클래스
 class Person():
     def hi(self):
-        print("하이")
+        print("안녕")
 
-    def hello(self):
-        print("헬로")
+class Add_Person():
+    def __init__(self):
+        self.person_directiory = [] # 사람 인명부에 사람을 append 한다.
+    
+    def add_person(self, person):
+        self.person_directiory.append(person)
 
+# Person 객체 생성
+person1 = Person()            
+person2 = Person()
 
-# 자식클래스 => 자식클래스의 메서드(함수) 갯수는 부모클래스보다 같거나 많다.
-class Student(Person):
-    def study(self):
-        print("공부")
+add_person_instance = Add_Person()
 
-    def hello(self): # 메서드 오버라이딩
-        print("안녕~~")
+add_person_instance.add_person(person1)
+add_person_instance.add_person(person2)
 
-    def hello2(self):
-        super().hello()
-    # hello2 함수에 super().hello() 호출하게 되면 부모클래스의 hello 메서드가 호출이 된다.
-    # Student 클래스 => 만들어진 객체는 2개의 hello 메서드를 현재 가지고 있는 상태.
-
-Jin = Student()
-Jin.hi()
-Jin.hello()
-Jin.study()
-Jin.hello2()
-
-print("=======")
-Paul = Person()
-Paul.hi()
-Paul.hello()
-Paul.study()
+for person in add_person_instance.person_directiory:
+    person.hi()
