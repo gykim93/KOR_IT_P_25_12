@@ -1,28 +1,20 @@
-class Person():
-    def __init__(self):
-        print("Person __init__ 호출")
-        self.hello = "안녕"
+# 지역변수
+# 함수 내에서 정의된 변수
+# 함수 내에서만 사용 가능
 
-class Student(Person):
-    def __init__(self):
-        print("Student __init__ 호출")        
-        super().__init__() # 부모의 생성자를 호출한다.
-        self.classroom = "A class"
+# 전역변수
+# 함수 안이나 밖에서 어디서든 사용 가능
 
-Jin = Student()        
-print(Jin.classroom)
-print(Jin.hello)
+# global 있다면 => 함수 안과 바깥쪽이 동일
+# global 없다면 => 함수 안과 밖은 서로가 남남
 
-# 자식클래스에 __init__ 생성자가 있다면 super().__init__() 써줘야된다.(안써주게 되면 자동으로 호출x)
-# 자식클래스에 __init__ 생성자가 없다면 super().__init__() 생략가능(자동으로 호출)
+a = 20
 
-class Person2():
-    def __init__(self):
-        print("Person init 호출")
-        self.hello = "안녕"
-    def print_hi(self):
-        print("안녕하세요")    
-
-class Student2(Person2):
-    pass
-Jin2 = Student2()
+def abc():
+    global a
+    a = 10
+    print(a)
+    
+print(a)
+abc()
+print(a)
