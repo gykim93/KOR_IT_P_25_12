@@ -1,38 +1,38 @@
-print("== 인스턴스 메서드 ==")
-# 인스턴스 메서드
+# 상속 => 물려받다, 물려받은 기능을 유치한채 다른 기능을 추가
+# 물려주는 클래스 => 부모클래스
+# 물려받는 클래스 => 자식클래스
+
+
+# 부모클래스
 class Person():
     def hi(self):
-        print("hi")
+        print("하이")
 
-Jin = Person()
-Jin.hi()        
+    def hello(self):
+        print("헬로")
 
-print("== 스태틱(정적) 메서드 ==")
 
-# 정적 메서드 => 첫 번째 매개변수로 self는 필요없다.
-class Calc():
-    @staticmethod # 스태틱(정적) 메서드
-    def add(a, b):
-        print(a + b)
+# 자식클래스 => 자식클래스의 메서드(함수) 갯수는 부모클래스보다 같거나 많다.
+class Student(Person):
+    def study(self):
+        print("공부")
 
-Calc.add(10, 20) # 클래스에서 바로 메서드(함수) 호출(실행)이 가능하다.
+    def hello(self): # 메서드 오버라이딩
+        print("안녕~~")
 
-print("== 클래스 메서드 ==")
+    def hello2(self):
+        super().hello()
+    # hello2 함수에 super().hello() 호출하게 되면 부모클래스의 hello 메서드가 호출이 된다.
+    # Student 클래스 => 만들어진 객체는 2개의 hello 메서드를 현재 가지고 있는 상태.
 
-# 클래스 메서드
-class Person2():
-    count = 0 # 클래스 속성
-    def __init__(self):
-        Person2.count += 1
-    
-    @classmethod
-    def print_count(cls): #클래스메서드
-        print(f"사람이 총 {cls.count}명 있습니다.") # cls로 클래스 속성에 접근한다.
+Jin = Student()
+Jin.hi()
+Jin.hello()
+Jin.study()
+Jin.hello2()
 
-Person2.print_count()        
-Jin2 = Person2()
-
-Person2.print_count()  
-Jin2 = Person2()      
-
-Person2.print_count()  
+print("=======")
+Paul = Person()
+Paul.hi()
+Paul.hello()
+Paul.study()
