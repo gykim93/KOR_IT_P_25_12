@@ -1,75 +1,33 @@
-# 리스트, 튜플, 세트, 딕셔너리
-# 리스트 list
-# 선언 : list1 = []
-# 순서보장 : O
-# 중복허용 : O
-# 접근 : list1[idx]
-# 수정 : O
-# 추가 : append(), insert(), extend()
-# 삭제 : remove(), pop(), clear()
+# 리스트 컴프리헨션
+# 회사에서 납품하는 제품
+# 반품대상
+items = ["RED-01", "RED-02", "BLUE-01", "BLUE-02"]
+r_items = []
+# print(items)
+# print(r_items)
 
-# 튜플 tuple
-# 선언 : t = ()
-# 순서보장 : O
-# 중복허용 : O
-# 접근 : t[idx]
-# 수정 : X
-# 추가 : X
-# 삭제 : X
+# for r in items:
+#     if r.startswith("BLUE"):
+#         r_items.append(r)
+# print(r_items)
 
-# 세트 set
-# 선언 : s = {}
-# 순서보장 : X
-# 중복허용 : X
-# 접근 : X
-# 수정 : X
-# 추가 : add(), update()
-# 삭제 : remove(), clear(), disacrd()
+# 리스트 내에서 어떤 해당하는 조건의 데이터만 뽑아내거나
+# 값을 바꿔서 새로운 리스트를 만들 때 사용할 수 있다/
+# 문법
+# 표현식 for 변수 in 반복대상 if 조건
+# 리스트 컴프리헨션을 사용해서 3보다 큰 숫자만 뽑아서, 새로운 리스틑 만들어라
+# m_list = [1,2,3,4,5]
+# new_list = [x for x in m_list if x > 3]
+# print(new_list)
 
-# 딕셔너리
-# 선언 : dict = {key : value}
-# 순서보장 : O
-# 중복허용 : X(key)
-# 접근 : dict[dict], dict.get(key)
-# 수정 : O(value)
-# 추가 : dict[key] = value, update()
-# 삭제 : pop(), popitem(), clear
+print("모든 모델명 뒤에 SC")
+items_cr = [r + "_SC" for r in items]
+print(items_cr)
 
-# 언제 써야되나?
+print("모든 모델명을 소문자로 바꾼다.")
+items_lower = [r.lower() for r in items]
+print(items_lower)
 
-# 여러 값들을 순서대로 관리 해야한다 ? => 리스트
-# 한번 만들고나면 바뀔일이 없거나, 프로그램 실행 중에 실수라도 값이 바뀔 수 없는 그런상황을 막아야한다? 튜플
-# 값의 존재여부가 중요하거나, 중복이 안된다면? => 세트
-# key, value 통해서 효율적으로 데이터를 관리해야한다 => 딕셔너리
-
-# 튜플
-# 추가, 수정, 삭제 => 모두 불가능한 읽기전용
-# => 수정하는 방법이 존재한다.
-# tuple(), list()로 감싸면 된다.
-print("튜플 => 리스트, 리스트 => 튜플")
-t = ("귤", "사과")
-print(t)
-list1 = list(t) # 이렇게하면 리스트 형태로 바뀐다.
-list1.append("포도") # 리스트에서 제공하는 append() 함수로 값을 추가.
-print(list1)
-t = tuple(list1)
-print(t)
-
-# 리스트
-# 중복된 값이 허용된다. 만약에 어떤 상황에서 중복값들을 제거해야 할 때가 있다.
-print("리스트 => 세트, 세트 => 리스트")
-m_list = ["귤", "사과", "배", "배", "배"] # 과일 상자 => 배는 총 3개
-print(m_list)
-m_set = set(m_list) # set()로 바꿀 수가 있다.
-print(m_set)
-m_list = list(m_set)
-print(m_list)
-
-# 딕셔너리 : 순서보장O, 중복X(key)
-print("리스트 => 딕셔너리, 딕셔너리 => 리스트")
-m_list2 = ["귤", "사과", "배", "배", "배"]
-print(m_list2)
-m_dict = dict.fromkeys(m_list2)
-print(m_dict)
-m_list2 = list(m_dict)
-print(m_list2)
+print("모든 모델명 중에 02번 제품만 뽑느데 뒤에 (new)라는 문장을 붙힌다.")
+items_new = [r + "_(new)" for r in items if r.endswith("02")]
+print(items_new)
