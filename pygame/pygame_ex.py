@@ -31,7 +31,7 @@ hero.add_img("C:/Users/admin/Desktop/pyhon_25_12/pygame/hero.jpg")
 hero.change_size(80, 80)
 hero.x = round(size[0] / 2) - round(hero.width / 2)
 hero.y = size[1] - hero.height - 100
-
+hero.move = 30
 k = 0
 # 4.이벤트
 system_exit = 0
@@ -41,6 +41,11 @@ while system_exit == 0:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             system_exit = 1
+        if event.type == pygame.KEYDOWN: # 키가 눌렸을 때
+            if event.key == pygame.K_LEFT: # 방향키 왼쪽
+                hero.x -= hero.move
+            if event.key == pygame.K_RIGHT: # 방향키 오른쪽    
+                hero.x += hero.move
     # 변화(입력에 따른 변화, 시간에 따른 변화)
     k += 1
 
