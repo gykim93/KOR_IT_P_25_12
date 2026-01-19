@@ -5,17 +5,24 @@ pygame.init()
 # 2.게임화면설정
 size = [400, 900]
 screen = pygame.display.set_mode(size)  # 게임화면의 크기
-title = "pygame_0119" #  게임제목
-pygame.display.set_caption(title)# 파이게임 실행 시 상단에 나오는 게임 제목
+title = "pygame_0119"  #  게임제목
+pygame.display.set_caption(title)  # 파이게임 실행 시 상단에 나오는 게임 제목
 # 3.게임내에서의 설정 => 변수
 clock = pygame.time.Clock()
 black_color = (0, 0, 0)
 
 # 게임 내에서 사용할 이미지를 불러온다. 경로는 본인의 해당 이미지 파일이 있는 곳에 맞게 해야된다.
-hero = pygame.image.load("C:/Users/admin/Desktop/pyhon_25_12/pygame/hero.jpg").convert_alpha() # 이미지 최적화
+hero = pygame.image.load(
+    "C:/Users/admin/Desktop/pyhon_25_12/pygame/hero.jpg"
+).convert_alpha()  # 이미지 최적화
 
 # 불러온 이미지의 크기를 100,100 픽셀로 조정
-hero = pygame.transform.scale(hero, (100, 100))
+hero = pygame.transform.scale(hero, (80, 80))
+hero_width, hero_height = hero.get_size()
+# print("width : ", hero_width)
+# print("height : ", hero_height)
+hero_x = round(size[0] / 2) - round(hero_width / 2)
+hero_y = size[1] - hero_height - 100
 
 k = 0
 # 4.이벤트
@@ -32,7 +39,7 @@ while system_exit == 0:
     # 전사작업(그리기)
     screen.fill(black_color)
     # 화면에 hero 이미지를 그린다 위치는 200, 300 위치에 그린다.
-    screen.blit(hero, (150, 500))
+    screen.blit(hero, (hero_x, hero_y))
     # 업데이트
     pygame.display.flip()
 # 종료
