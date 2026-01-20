@@ -1,4 +1,5 @@
 import pygame
+import random
 
 # 1.초기화
 pygame.init()
@@ -42,6 +43,7 @@ left_move = False
 right_move = False
 space_on = False
 missile_list = []  # 미사일 객체를 저장할 리스트
+enemy_list = [] # 적기 객체를 저장할 리스트
 # 4.이벤트
 system_exit = 0
 while system_exit == 0:
@@ -96,12 +98,35 @@ while system_exit == 0:
     for m in delete_missile_list:
         if m in missile_list: # 리스트에 존재하는지 확인 후 삭제
             missile_list.remove(m)            
-            print("미사일 제거")
+            #print("미사일 제거")
+    if random.random() >= 0.98: # 함수가 반환한 난수가 0.98보다 크거나 같은지 확인. 약 2%의 확률로 조건이 참이 된다
+        enemy = Img_Object()
+        enemy.add_img("C:/Users/admin/Desktop/pyhon_25_12/pygame/enemy.png")
+        enemy.change_size(35,35)
+        # enemy 의 x좌표를 화면 가로범위 내의 랜덤한 위치로 설정, 주인공의 중앙을 기준으로
+        # 한 범위내에서 랜덤한 위치를 선택
+        enemy.x = random.randrange(0 + round(hero.width/2), size[0] - enemy.width - round(hero.width/2))
+        enemy.y = 15 # enemy의 y좌표를 15로 고정
+        enemy.move = 5
+        enemy_list.append(enemy)
+    
+    delete_enemy_list = [] # 화면밖을 벗어난 enemy 객체를 저장할 리스트
+    
+    for e in enemy_list:
+        e.y += e.move
+        if e.y > size[1]:
+                delete_enemy_list.append(e)
+    for e in delete_enemy_list:
+        if e in enemy_list:
+            enemy_list.remove(e)                
+            print("enemy 제거")
     # 전사작업(그리기)
     screen.fill(black_color)
     hero.show_img()
     for m in missile_list:
         m.show_img()  # 미사일을 게임 화면에 표시
+    for e in enemy_list:
+        e.show_img()  # enemy 게임 화면에 표시        
     # 업데이트
     pygame.display.flip()
 # 종료
