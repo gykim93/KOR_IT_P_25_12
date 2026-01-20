@@ -40,6 +40,8 @@ hero.move = 10
 k = 0
 left_move = False
 right_move = False
+space_on = False
+missile_list = []  # 미사일 객체를 저장할 리스트
 # 4.이벤트
 system_exit = 0
 while system_exit == 0:
@@ -53,11 +55,15 @@ while system_exit == 0:
                 left_move = True
             if event.key == pygame.K_RIGHT:  # 방향키 오른쪽
                 right_move = True
+            if event.key == pygame.K_SPACE:
+                space_on = True
         elif event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT:  # 방향키 왼쪽
                 left_move = False
             if event.key == pygame.K_RIGHT:  # 방향키 오른쪽
                 right_move = False
+            if event.key == pygame.K_SPACE:
+                space_on = False
     # 변화(입력에 따른 변화, 시간에 따른 변화)
     if left_move == True:
         hero.x -= hero.move
@@ -67,19 +73,27 @@ while system_exit == 0:
         hero.x += hero.move
         if hero.x >= size[0] - hero.width:
             hero.x = size[0] - hero.width
-    # 이미지의 좌, 우 이동범위를 게임 화면 좌, 우측 끝으로 제한
 
-    # 좌측으로 이동 시 제한
-    # => hero의 x좌표가 0이하가 되면 주인공 x값을 0으로 고정
+    if space_on == True and k % 6 == 0:
+        missile = Img_Object()  # 미사일 객체 생성 => 위 if문에 조건이 True일 때
+        missile.add_img("C:/Users/admin/Desktop/pyhon_25_12/pygame/missile.png")
+        missile.change_size(45, 50)
 
-    # 우측으로 이동 시 제한
-    # => hero x좌표가 게임화면 너비 - hero의 이미지 너비보다 크거나 같다
-    # => 즉, 우측 경계를 넘어가려고 한다면 hero의 x좌표를 게임화면의 너비-hero의 너비로 고정
+        # 미사일 위치 설정
+        missile.x = hero.x + hero.width / 2 - missile.width / 2
+        missile.y = hero.y - missile.height - 10
+        missile.move = 7  # 미사일 속도
+        missile_list.append(missile)  # 위에서 미리 만들어준 미사일 리스트에 append
     k += 1
+
+    for m in missile_list:
+        m.y -= m.move
 
     # 전사작업(그리기)
     screen.fill(black_color)
     hero.show_img()
+    for m in missile_list:
+        m.show_img()  # 미사일을 게임 화면에 표시
     # 업데이트
     pygame.display.flip()
 # 종료
