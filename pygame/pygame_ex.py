@@ -86,9 +86,17 @@ while system_exit == 0:
         missile_list.append(missile)  # 위에서 미리 만들어준 미사일 리스트에 append
     k += 1
 
+    delete_missile_list = [] # 삭제할 미사일을 저장할 리스트 생성
+    
     for m in missile_list:
         m.y -= m.move
-
+        if m.y <= -m.height:
+            delete_missile_list.append(m)
+            
+    for m in delete_missile_list:
+        if m in missile_list: # 리스트에 존재하는지 확인 후 삭제
+            missile_list.remove(m)            
+            print("미사일 제거")
     # 전사작업(그리기)
     screen.fill(black_color)
     hero.show_img()
