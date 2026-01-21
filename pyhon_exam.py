@@ -1,33 +1,100 @@
-# 리스트 컴프리헨션
-# 회사에서 납품하는 제품
-# 반품대상
-items = ["RED-01", "RED-02", "BLUE-01", "BLUE-02"]
-r_items = []
-# print(items)
-# print(r_items)
+# numpy
+import numpy as np
 
-# for r in items:
-#     if r.startswith("BLUE"):
-#         r_items.append(r)
-# print(r_items)
+# ndArray ? N-dismensional Array의 약자, 다차원 배열
+# ndArray 생성
+# numpy.array([1,2,3,4])
+# np.array([1,2,3,4])
 
-# 리스트 내에서 어떤 해당하는 조건의 데이터만 뽑아내거나
-# 값을 바꿔서 새로운 리스트를 만들 때 사용할 수 있다
-# 문법
-# 표현식 for 변수 in 반복대상 if 조건
-# 리스트 컴프리헨션을 사용해서 3보다 큰 숫자만 뽑아서, 새로운 리스틑 만들어라
-# m_list = [1,2,3,4,5]
-# new_list = [x for x in m_list if x > 3]
-# print(new_list)
+# arr = [1,2,3,4] # 파이썬 리스트
+arr1 = np.array([1, 2, 3, 4])  # 넘파이 ndArray
 
-print("모든 모델명 뒤에 SC")
-items_cr = [r + "_SC" for r in items]
-print(items_cr)
+# print(type(arr))
+# print(type(arr1))
 
-print("모든 모델명을 소문자로 바꾼다.")
-items_lower = [r.lower() for r in items]
-print(items_lower)
+# print(arr)
+# print(arr1)
 
-print("모든 모델명 중에 02번 제품만 뽑느데 뒤에 (new)라는 문장을 붙힌다.")
-items_new = [r + "_(new)" for r in items if r.endswith("02")]
-print(items_new)
+# 2차원 ndArray 생성
+arr2 = np.array([[1, 2, 3, 4], [5, 6, 7, 8]])
+
+# 3차원 ndArray 생성
+arr3 = np.array([[[1, 2, 3, 4], [5, 6, 7, 8]], [[1, 2, 3, 4], [5, 6, 7, 8]]])
+
+# print(arr1)
+# print("================")
+# print(arr2)
+# print("================")
+# print(arr3)
+
+# ndArray.ndim => 배열의 차원을 알 수 있다
+# print("== ndArray.ndim ==")
+# print(arr1.ndim)
+# print(arr2.ndim)
+# print(arr3.ndim)
+
+# ndArray.shape => 모양
+# print("== ndArray.shape ==")
+# print(arr1.shape)
+# print(arr2.shape)
+# print(arr3.shape)
+
+# ndArray.size => 크기
+# print("== ndArray.size ==")
+# print(arr1.size)
+# print(arr2.size)
+# print(arr3.size)
+
+# ndArray.dtype => 타입
+# print("== ndArray.dtype ==")
+# print(arr1.dtype)
+# print(arr2.dtype)
+# print(arr3.dtype)
+
+""" arr1
+[1 2 3 4]
+================
+arr2
+[[1 2 3 4]
+ [5 6 7 8]]
+================
+arr3
+[[[1 2 3 4]
+  [5 6 7 8]]
+
+ [[1 2 3 4]
+  [5 6 7 8]]] """
+  
+# 배열 생성 함수
+# 0으로 채워진 행렬
+# np.zeros((3,4)) 
+# array([[0., 0., 0., 0.],
+#        [0., 0., 0., 0.],
+#        [0., 0., 0., 0.]])
+# 1로 채워진 행렬
+# np.ones((2,3,4))
+# array([[[1., 1., 1., 1.],
+#         [1., 1., 1., 1.],
+#         [1., 1., 1., 1.]],
+
+#        [[1., 1., 1., 1.],
+#         [1., 1., 1., 1.],
+#         [1., 1., 1., 1.]]])
+# # i로 채워진 행렬
+# np.full((2,2), 5)
+# array([[5, 5],
+#        [5, 5]])
+
+# like => 다른 배열의 모양을 본따서
+# print(np.zeros_like(arr1))
+# print("=======================")
+# print(np.ones_like(arr2))
+# print("=======================")
+# print(np.full_like(arr3, 5))
+
+# random => 난수
+# np.random.seed(1) # 최초 난수생성 기준
+# random_arr = np.random.randint(-100, 100, (2,3))
+# # -100 ~ 100 사이에 있는 정수로 2 * 3 행렬 생성
+
+# print(random_arr)
