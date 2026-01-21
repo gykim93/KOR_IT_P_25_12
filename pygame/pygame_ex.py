@@ -1,6 +1,6 @@
 import pygame
 import random
-
+import time # 시간과 관련된
 # 1.초기화
 pygame.init()
 # 2.게임화면설정
@@ -133,13 +133,28 @@ while system_exit == 0:
     # missile과 enemy 제거
     for m in crash_m_list:
         missile_list.remove(m)
-        print("충돌 missile 제거")
+        # print("충돌 missile 제거")
 
     for e in crash_e_list:
         enemy_list.remove(e)
-        print("충돌 enemy 제거")        
+        # print("충돌 enemy 제거")        
                     
-                
+    # hero와 missile 충돌
+    crash_h_e_list = []
+    for e in enemy_list:
+        if (hero.x - e.width <= e.x <= hero.x + hero.width) and (hero.y - e.height <= e.y <= hero.y + hero.height):
+            crash_h_e_list.append(e)
+    
+    # hero와 충돌한 enemy 제거 
+    for e in crash_h_e_list:
+        if e in enemy_list:
+            enemy_list.remove(e)
+            # print("hero 충돌한 enemy 제거")
+            
+    if crash_h_e_list:
+        system_exit = 1
+        time.sleep(2) # 주어진 시간(초)만큼 프로그램의 실행을 일시중지
+        
     # 전사작업(그리기)
     screen.fill(black_color)
     hero.show_img()
