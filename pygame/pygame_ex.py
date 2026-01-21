@@ -119,7 +119,27 @@ while system_exit == 0:
     for e in delete_enemy_list:
         if e in enemy_list:
             enemy_list.remove(e)                
-            print("enemy 제거")
+            #print("enemy 제거")
+    
+    # missile과 enemy 충돌
+    crash_m_list = []
+    crash_e_list = []
+    for m in missile_list:
+        for e in enemy_list:
+            if (m.x - e.width <= e.x <= m.x + m.width) and (m.y - e.height <= e.y <= m.y + m.height):
+                crash_m_list.append(m)
+                crash_e_list.append(e)
+    
+    # missile과 enemy 제거
+    for m in crash_m_list:
+        missile_list.remove(m)
+        print("충돌 missile 제거")
+
+    for e in crash_e_list:
+        enemy_list.remove(e)
+        print("충돌 enemy 제거")        
+                    
+                
     # 전사작업(그리기)
     screen.fill(black_color)
     hero.show_img()
